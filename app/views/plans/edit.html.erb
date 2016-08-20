@@ -1,1 +1,6 @@
-<%= @plans %>
+
+
+<%= form_for @plans do |f| %>
+  <%= f.text_area :message, placeholder: "How many assets do you have?" %>
+  <%= f.submit "Plan", id: "create-plan" %>
+<% end %>
