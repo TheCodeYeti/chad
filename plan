@@ -1,0 +1,24 @@
+Financial plan inputs
+
+Financial plan takes one input that is a hash with pre-set keys
+
+inputs = {
+  age: integer
+  kids: {
+    name: birthdate as date or approximation using positive or negative value integers to compare to today's year
+  }
+  retirement_age:
+  current_salary:
+  vacations: {
+    hash to be figured out later
+  }
+  current_assets {
+
+  }
+  liabilities {
+
+  }
+  life_expectancy:
+
+
+}
