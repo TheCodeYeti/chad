@@ -12,24 +12,21 @@
   </div>
 </div>
 
-<footer>
+<footer class="bottom-bar">
   <div class="small-4 columns">
-    <div class="row">
-      <div class="large-12 columns">
-        <%= form_tag("/update", method: "post") do %>
 
-          <div class="row collapse">
-            <div class="small-10 columns">
-              <%= text_field_tag(:user_input) %>
-            </div>
-            <div class="small-2 columns">
-              <%= submit_tag('Enter', class: "button") %>
-            </div>
-          </div>
+    <%= form_tag("/update", method: "post") do %>
 
-        <% end %>
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <%= text_field_tag(:user_input) %>
+        </div>
+        <div class="small-2 columns">
+          <%= submit_tag('Enter', class: "button") %>
+        </div>
       </div>
-    </div>
+
+    <% end %>
 
   </div>
   <div class="small-8 columns">
