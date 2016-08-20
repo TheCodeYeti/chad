@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'plans/update'
 
-  root 'plan#edit'
+  root 'plans#edit'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
