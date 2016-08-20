@@ -1,2 +1,40 @@
-<h1>Plans#edit</h1>
-<p>Find me in app/views/plans/edit.html.erb</p>
+<div class="fullwidth">
+  <div class="row">
+    <div class="small-4 columns">
+      4 columns
+      <h2>Chat window</h2>
+    </div>
+
+    <div class="small-8 columns">
+      8 columns
+      <h2>Your Plan</h2>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="small-4 columns">
+    <div class="row">
+      <div class="large-12 columns">
+        <%= form_tag("/update", method: "post") do %>
+
+          <div class="row collapse">
+            <div class="small-10 columns">
+              <%= text_field_tag(:user_input) %>
+            </div>
+            <div class="small-2 columns">
+              <%= submit_tag('Enter', class: "button") %>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+  <div class="small-8 columns">
+    this is the footer - where the plan shortfall/surplus will go
+
+  </div>
+
+</footer>
