@@ -1,0 +1,45 @@
+
+
+
+If age < 40 then
+risk = 10
+
+else if age > 40 and age < 65
+risk = 5
+
+else
+risk = 1
+end
+
+
+If current_salary > 200000 then
+risk = 10
+
+else if current_salary > 50000 and current_salary < 200000
+risk = 5
+
+else
+risk = 1
+end
+
+
+If net_worth > 1000000 then
+risk = 10
+
+else if net_worth > 200000 and net_worth < 1000000
+risk = 5
+
+else
+risk = 1
+end
+
+
+If risk > 7 then
+portfolio = 100% equity
+
+else if risk > 4 and age < 7
+portfolio = 50% equity && 50% fixed_income
+
+else
+portfolio = 100% fixed_income
+end
