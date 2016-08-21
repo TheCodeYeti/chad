@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'd3-rails', '~> 3.5', '>= 3.5.17'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'd3-rails', '~> 3.5', '>= 3.5.17'
+gem 'chart-js-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

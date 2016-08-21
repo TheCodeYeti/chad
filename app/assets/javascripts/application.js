@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require Chart
 //= require d3
 //= require_tree .
 
