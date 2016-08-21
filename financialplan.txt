@@ -41,5 +41,5 @@ else if risk > 4 and age < 7
 portfolio = 50% equity && 50% fixed_income
 
 else
-portfolio = 100% fixed_income
+portfolio = 100% cash
 end
