@@ -2,12 +2,10 @@
 <div class="fullwidth">
   <div class="row">
     <div class="small-4 columns">
-      4 columns
       <h2>Chat window</h2>
     </div>
 
     <div class="small-8 columns">
-      8 columns
       <h2>Your Plan</h2>
     </div>
   </div>
@@ -15,20 +13,17 @@
 
 <footer class="bottom-bar">
   <div class="small-4 columns">
-
-    <%= form_tag("/update", method: "post") do %>
-
+    <form>
       <div class="row collapse">
         <div class="small-10 columns">
-          <%= text_field_tag(:user_input) %>
+          <input type="text" name="name" value="" id="user-input">
         </div>
         <div class="small-2 columns">
-          <%= submit_tag('Enter', class: "button") %>
+          <a href="#" class="button postfix" id="chat-button">Enter</a>
+
         </div>
       </div>
-
-    <% end %>
-
+    </form>
   </div>
   <div class="small-8 columns">
     this is the footer - where the plan shortfall/surplus will go
@@ -36,4 +31,3 @@
   </div>
 
 </footer>
-

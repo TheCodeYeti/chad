@@ -1,11 +1,22 @@
-class Plan < ActiveRecord::Base
+class Plan #< ActiveRecord::Base
 
-  def intitialize
-    # assumptions go here
-    load_assumptions
+  attr_accessor :goal, :goal_date, :start_date, :roi
 
-
-  end
+  # def intitialize(options = {})
+  #   # assumptions go here
+  #   if options[:start_date]
+  #     @start_date = options[:start_date]
+  #   else
+  #     @start_date = DateTime.now
+  #   end
+  #   if options[:roi]
+  #     @roi = options[:roi]
+  #   else
+  #     @roi = 0.05
+  #   end
+  #
+  #
+  # end
 
   def refresh
     # iterate from start year(today) to end year(expected life expectancy year)
@@ -17,15 +28,13 @@ class Plan < ActiveRecord::Base
     # show net surplus or shortfall
 
     # regular deposits formula
-    P = M * ( ( ( 1 + ( i / q ) ) ** ( n * q ) ) - 1 ) * ( q / i )
-    deposit_per_period = ( interest_rate * goal_amount ) / ( periods_per_year * ( ( ( 1 + ( interest_rate / periods_per_year ) ) ** ( years * periods_per_year ) ) - 1 ) )
+    # P = M * ( ( ( 1 + ( i / q ) ) ** ( n * q ) ) - 1 ) * ( q / i )
+    # deposit_per_period = ( interest_rate * goal_amount ) / ( periods_per_year * ( ( ( 1 + ( interest_rate / periods_per_year ) ) ** ( years * periods_per_year ) ) - 1 ) )
 
     example_goal = {
       goal_name: 'vacation',
-      goal_date: @start_date.beginning_of_month + 6.months,
-      goal_amount: 5000
-      }
-    }
+      goal_date: (@start_date.beginning_of_month + 6.months),
+      goal_amount: 5000 }
 
     @goal ||= example_goal
 
@@ -40,36 +49,40 @@ class Plan < ActiveRecord::Base
 
       plan_date = @start_date.beginning_of_month
 
-      while plan_date < @goal_date do
+      years = ( @goal_date.year - plan_date.year ) + ( ( @goal_date.month - plan_date.month ) / 12 )
 
-        plan['data']['plan_date']['savings'] =
+      plan['deposit_per_month'] = ( @roi * @goal['goal_amount'] ) / ( 12 * ( ( ( 1 + ( @roi / 12 ) ) ** ( years * 12 ) ) - 1 ) )
 
-        savings +=
+      # while plan_date < @goal_date do
+      #
+      #   plan['data']['plan_date']['savings'] =
+      #
+      #   savings +=
+      #
+      #   plan_date += 1.month
+      #
+      # end
+      # (@start_date...@goal_date).each do |current_month|
+      #   planned_year = {}
+      #
+      #   planned_year['year'] = current_year.year
+      #   planned_year['income'] = income
+      #   planned_year['expenses'] = calc_expenses #need this function
+      #   planned_year['returns'] = calc_returns(assets) #need this function
+      #   planned_year['taxes'] = calc_taxes(income) #need this function
+      #   net_worth_change = calc_net_worth_change(planned_year) #need this function
+      #   planned_year['net_worth_change'] = net_worth_change #need this function
+      #   net_worth += net_worth_change
+      #   planned_year['net_worth'] = net_worth
+      #
+      #
+      #
+      #
+      #   income = dollars( ( income * ( 1 + @inflation_rate ) ) )
+      #
+      # end
 
-        plan_date += 1.month
-
-      end
-      (@start_date...@goal_date).each do |current_month|
-        planned_year = {}
-
-        planned_year['year'] = current_year.year
-        planned_year['income'] = income
-        planned_year['expenses'] = calc_expenses #need this function
-        planned_year['returns'] = calc_returns(assets) #need this function
-        planned_year['taxes'] = calc_taxes(income) #need this function
-        net_worth_change = calc_net_worth_change(planned_year) #need this function
-        planned_year['net_worth_change'] = net_worth_change #need this function
-        net_worth += net_worth_change
-        planned_year['net_worth'] = net_worth
-
-
-
-
-        income = dollars( ( income * ( 1 + @inflation_rate ) ) )
-
-      end
-
-
+    end
   end
 
   def calc_end_year
@@ -93,21 +106,15 @@ class Plan < ActiveRecord::Base
 
   end
 
-  def load_assumptions
-
-    @start_date = Date.now
-    # @age = 25
-    # @goal_age = 65
-    # @life_expectancy = 82
-    # @annual_income = 37500
-    @inflation_rate = 0.02
-    @roi = {
-      'conservative' => 0.03,
-      'average' => 0.05,
-      'risky' => 0.07,
-    }
-
-  end
+  # def load_assumptions
+  #
+  #   # @age = 25
+  #   # @goal_age = 65
+  #   # @life_expectancy = 82
+  #   # @annual_income = 37500
+  #   # @inflation_rate = 0.02
+  #
+  # end
 
   def dollars(amount)
     amount.to_f.round(2)
