@@ -1,11 +1,13 @@
-
-$.ajax({
+$(function(){
+  $('.button').on('submit', function(eventObject){
+      eventObject.preventDefault();
+          $.ajax({
            type: "GET",
            contentType: "application/json; charset=utf-8",
            url: 'data',
            dataType: 'json',
            success: function (data) {
-               draw(data);
+               console.log(data);
            },
            error: function (result) {
                error();
@@ -54,3 +56,6 @@ function draw(data) {
 function error() {
     console.log("error")
 }
+
+  });
+});
