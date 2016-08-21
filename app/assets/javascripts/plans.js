@@ -11,6 +11,7 @@ $.ajax({
            }
        });
 
+
 //Regular pie chart example
 nv.addGraph(function() {
   var chart = nv.models.pieChart()
@@ -83,4 +84,3 @@ function exampleData() {
       }
     ];
 }
-
