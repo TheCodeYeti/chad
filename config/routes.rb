@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'plans/edit'
 
   get 'plans/update'
-  post 'plans/update'
+  post 'update', to: 'plans#update'
 
   root 'plans#edit'
   # The priority is based upon order of creation: first created -> highest priority.
